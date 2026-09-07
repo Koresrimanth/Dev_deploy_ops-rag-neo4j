@@ -1,0 +1,10 @@
+{
+  "document_id": "warehouse_policy_001",
+  "title": "Warehouse Receiving Procedure",
+  "document_type": "warehouse_policy",
+  "supplier": null,
+  "category": "warehouse",
+  "version": "1.0",
+  "effective_date": "2026-01-20",
+  "content": "When a shipment arrives at the warehouse, the receiving team must verify the purchase order number, supplier, quantity, packaging condition, and product identifiers. Damaged packaging must be photographed and recorded before the shipment is accepted. Quantity discrepancies must be reported to procurement on the same business day."
+}

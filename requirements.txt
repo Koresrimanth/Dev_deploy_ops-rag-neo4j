@@ -1,0 +1,9 @@
+pandas
+numpy
+langchain
+langgraph
+groq
+elasticsearch
+google-genai
+python-dotenv
+tqdm

@@ -1,0 +1,10 @@
+{
+  "document_id": "supplier_policy_003",
+  "title": "Supplier Capacity and Allocation Policy",
+  "document_type": "supplier_policy",
+  "supplier": "Gamma Industrial",
+  "category": "capacity",
+  "version": "1.0",
+  "effective_date": "2026-05-01",
+  "content": "Gamma Industrial provides monthly capacity updates for strategic components. Procurement should compare the supplier's committed capacity with the forecasted requirement. If forecasted demand exceeds committed capacity, procurement must discuss allocation options with the supplier and identify alternative sources for the uncovered quantity."
+}

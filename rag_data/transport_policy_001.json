@@ -1,0 +1,10 @@
+{
+  "document_id": "transport_policy_001",
+  "title": "Transportation Escalation Policy",
+  "document_type": "transport_policy",
+  "supplier": null,
+  "category": "transportation",
+  "version": "1.3",
+  "effective_date": "2026-04-05",
+  "content": "Transportation delays affecting critical components must be escalated when the revised arrival date creates a risk of production interruption. The logistics team should first contact the carrier for an updated status, then inform procurement and the affected manufacturing location. Alternative transportation may be approved for high-priority shipments."
+}

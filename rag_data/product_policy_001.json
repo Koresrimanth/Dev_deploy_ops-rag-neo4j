@@ -1,0 +1,10 @@
+{
+  "document_id": "product_policy_001",
+  "title": "Product Return and Replacement Policy",
+  "document_type": "product_policy",
+  "supplier": null,
+  "category": "returns",
+  "version": "1.0",
+  "effective_date": "2026-03-01",
+  "content": "Products received with confirmed manufacturing defects can be returned to the supplier for replacement or repair, subject to the purchase agreement. The requesting team must provide the product identifier, purchase order number, defect description, and supporting inspection evidence. Return requests should be submitted within 10 business days of defect confirmation."
+}

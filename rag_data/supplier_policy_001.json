@@ -1,0 +1,10 @@
+{
+  "document_id": "supplier_policy_001",
+  "title": "Supplier Delivery Policy",
+  "document_type": "supplier_policy",
+  "supplier": "Alpha Components",
+  "category": "delivery",
+  "version": "1.0",
+  "effective_date": "2026-01-15",
+  "content": "Alpha Components standard delivery window is 5 to 7 business days from the confirmed purchase order date. Expedited delivery can be requested for critical parts, but the supplier must confirm availability before the expedited order is accepted. If a shipment is delayed by more than 2 business days, the supplier must notify the procurement team and provide a revised estimated delivery date."
+}
