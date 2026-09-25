@@ -5,7 +5,8 @@ from langgraph.graph import (
     START,
     END
 )
-
+from config.logger import setup_logging
+setup_logging()
 from orchestrator.planner import create_plan
 
 from orchestrator.executor import execute_plan
@@ -15,6 +16,7 @@ class OrchestratorState(
     TypedDict,
     total=False
 ):
+    request_id: str
 
     user_query: str
 
@@ -33,30 +35,17 @@ from langgraph.graph import (
     END
 )
 
-from .planner import create_plan
+from orchestrator.planner import create_plan
 
-from .executor import execute_plan
+from orchestrator.executor import execute_plan
 
-
-class OrchestratorState(
-    TypedDict,
-    total=False
-):
-
-    user_query: str
-
-    plan: Any
-
-    results: dict
-
-    final_answer: str
 
 
 async def planner_node(
     state
 ):
 
-    plan = await create_plan(
+    plan = await create_plan(state["request_id"],
         state["user_query"]
     )
 
@@ -69,7 +58,8 @@ async def executor_node(
 ):
 
     results = await execute_plan(
-        state["plan"]
+        state["plan"],
+        state["request_id"]
     )
 
     return {

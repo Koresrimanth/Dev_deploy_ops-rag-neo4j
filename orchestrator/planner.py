@@ -3,6 +3,11 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import (
     ChatPromptTemplate
 )
+import logging
+import time
+from config.logger import setup_logging
+setup_logging()
+logger = logging.getLogger(__name__)
 
 from orchestrator.schemas import ExecutionPlan
 
@@ -33,83 +38,120 @@ Capabilities:
         descriptions
     )
 
+
+def get_agent_descriptions():
+
+    descriptions = []
+
+    for name, info in AGENT_REGISTRY.items():
+
+        descriptions.append(
+            f"""
+Agent: {name}
+
+Capabilities:
+{", ".join(info["capabilities"])}
+"""
+        )
+
+    return "\n".join(descriptions)
+
+
 async def create_plan(
+    request_id: str,
     user_query: str
+    
 ):
 
-    agent_descriptions = (
-        get_agent_descriptions()
+    logger.info(
+        f"[{request_id}] Planning started"
     )
 
+    agent_descriptions = get_agent_descriptions()
+    print(agent_descriptions)
     prompt = ChatPromptTemplate.from_messages([
 
         (
             "system",
             """
-You are the execution planner for
-an enterprise multi-agent system.
+You are an execution planner.
 
-Available agents:
+The following agents are available:
 
 {agents}
 
-Your responsibility is to create an
-execution plan for the user's query.
+Create an execution plan for the user's query.
 
 Rules:
 
-1. Use only the available agents.
+1. Select agents ONLY from the available agents.
 
-2. If one agent is sufficient,
-   create one task.
+2. Use the agent capabilities to decide which
+   agent should handle each part of the query.
 
-3. If multiple agents are needed and
-   they are independent, they must have
-   empty depends_on lists.
+3. If one agent is sufficient, create one task.
 
-4. If one task needs the output of
-   another task, add the previous task's
-   ID to depends_on.
+4. If multiple agents are required and their work
+   is independent, create separate tasks with:
 
-5. Do not answer the question.
+   depends_on = []
 
-6. Do not call agents.
+5. Use depends_on only when one task requires
+   the result of another task.
 
-7. Only create the execution plan.
+6. Preserve entity names exactly as provided
+   by the user.
 
-Return an ExecutionPlan.
+   For example:
+   IMX-450 must remain IMX-450.
+
+7. Never replace entities with numbers,
+   indexes, placeholders, or generic names.
+
+8. Task instructions must contain the actual
+   entity from the user's query.
+
+9. If an available agent can handle the query,
+   create at least one task.
+
+10. Do not answer the user's question.
+
+11. Return only the ExecutionPlan.
 """
         ),
 
         (
             "human",
-            """
-User query:
-
-{query}
-"""
+            "{query}"
         )
     ])
 
-    structured_llm = (
-        llm.with_structured_output(
-            ExecutionPlan
-        )
+    structured_llm = llm.with_structured_output(
+        ExecutionPlan
     )
 
-    chain = (
-        prompt
-        | structured_llm
-    )
+    chain = prompt | structured_llm
 
     plan = await chain.ainvoke({
-
-        "agents":
-            agent_descriptions,
-
-        "query":
-            user_query
+        "agents": agent_descriptions,
+        "query": user_query
     })
 
-    return plan
+    if not plan.tasks:
+        raise ValueError(
+            "Planner returned an empty plan"
+        )
 
+    for task in plan.tasks:
+
+        if task.agent not in AGENT_REGISTRY:
+            raise ValueError(
+                f"Unknown agent: {task.agent}"
+            )
+
+    logger.info(
+        f"[{request_id}] Plan generated | "
+        f"tasks={len(plan.tasks)}"
+    )
+
+    return plan
