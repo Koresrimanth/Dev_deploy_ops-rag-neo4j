@@ -1,3 +1,23 @@
 venv
 .env
 __pycache__
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Environment variables / secrets
+.env
+.env.local
+
+# IDEs and system files
+.DS_Store
+.vscode/
+.idea/

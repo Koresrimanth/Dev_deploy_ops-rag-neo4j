@@ -1,0 +1,574 @@
+2026-09-25 13:55:13,703 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 13:57:10,190 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 13:57:32,718 | INFO | orchestrator.orchestrator_api | [1] Request received | query=Supplier Alpha is delayed.Which components are affected and what are their technical specifications?
+2026-09-25 13:57:32,737 | INFO | orchestrator.planner | [Supplier Alpha is delayed.Which components are affected and what are their technical specifications?] Planning started
+2026-09-25 13:57:34,086 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 13:57:34,115 | INFO | orchestrator.planner | [Supplier Alpha is delayed.Which components are affected and what are their technical specifications?] Plan generated | tasks=2  | latency=1.382s
+2026-09-25 13:57:34,115 | INFO | orchestrator.planner | [Supplier Alpha is delayed.Which components are affected and what are their technical specifications?] Task created | task_id=task1 | agent=rag_agent | depends_on=[]
+2026-09-25 13:57:34,115 | INFO | orchestrator.planner | [Supplier Alpha is delayed.Which components are affected and what are their technical specifications?] Task created | task_id=task2 | agent=graph_agent | depends_on=['task1']
+2026-09-25 13:57:34,115 | INFO | orchestrator.executor | [1] Execution started | total_tasks=2
+2026-09-25 13:57:34,126 | INFO | orchestrator.executor | [1] Ready tasks: ['task1']
+2026-09-25 13:57:34,126 | INFO | orchestrator.executor | [1] Executing tasks in parallel | tasks=['task1']
+2026-09-25 13:57:34,128 | INFO | orchestrator.executor | [1] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 13:57:34,128 | INFO | orchestrator.executor | [1] Building independent task input | task=task1
+2026-09-25 13:57:34,128 | INFO | orchestrator.executor | [1] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 13:57:34,128 | INFO | orchestrator.executor | [1] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 13:57:35,398 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 13:57:35,398 | INFO | orchestrator.executor | [1] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=1.277s
+2026-09-25 13:57:35,398 | INFO | orchestrator.executor | [1] Task completed | task=task1 | agent=rag_agent | latency=1.279s
+2026-09-25 13:57:35,398 | INFO | orchestrator.executor | [1] Task result stored | task=task1 | status=success
+2026-09-25 13:57:35,398 | INFO | orchestrator.executor | [1] Ready tasks: ['task2']
+2026-09-25 13:57:35,398 | INFO | orchestrator.executor | [1] Executing tasks in parallel | tasks=['task2']
+2026-09-25 13:57:35,398 | INFO | orchestrator.executor | [1] Task execution started | task=task2 | agent=graph_agent | dependencies=['task1']
+2026-09-25 13:57:35,410 | INFO | orchestrator.executor | [1] Building dependent task input | task=task2 | dependencies=['task1']
+2026-09-25 13:57:35,410 | INFO | orchestrator.executor | [1] Calling agent | task=task2 | agent=graph_agent
+2026-09-25 13:57:35,410 | INFO | orchestrator.executor | [1] Agent call started | task=task2 | agent=graph_agent
+2026-09-25 13:57:39,263 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 13:57:39,263 | INFO | orchestrator.executor | [1] Agent call completed | task=task2 | agent=graph_agent | status=200 | latency=3.859s
+2026-09-25 13:57:39,271 | INFO | orchestrator.executor | [1] Task completed | task=task2 | agent=graph_agent | latency=3.861s
+2026-09-25 13:57:39,271 | INFO | orchestrator.executor | [1] Task result stored | task=task2 | status=success
+2026-09-25 13:57:39,271 | INFO | orchestrator.executor | [1] Execution completed successfully
+2026-09-25 13:57:40,412 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 13:59:28,004 | INFO | orchestrator.orchestrator_api | [1] Request received | query=Which suppliers manufacture IMX-450 and what is its operating temperature?
+2026-09-25 13:59:28,006 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450 and what is its operating temperature?] Planning started
+2026-09-25 13:59:29,446 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 13:59:29,446 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450 and what is its operating temperature?] Plan generated | tasks=2  | latency=1.446s
+2026-09-25 13:59:29,446 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450 and what is its operating temperature?] Task created | task_id=task1 | agent=rag_agent | depends_on=[]
+2026-09-25 13:59:29,446 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450 and what is its operating temperature?] Task created | task_id=task2 | agent=graph_agent | depends_on=['task1']
+2026-09-25 13:59:29,455 | INFO | orchestrator.executor | [1] Execution started | total_tasks=2
+2026-09-25 13:59:29,455 | INFO | orchestrator.executor | [1] Ready tasks: ['task1']
+2026-09-25 13:59:29,456 | INFO | orchestrator.executor | [1] Executing tasks in parallel | tasks=['task1']
+2026-09-25 13:59:29,456 | INFO | orchestrator.executor | [1] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 13:59:29,456 | INFO | orchestrator.executor | [1] Building independent task input | task=task1
+2026-09-25 13:59:29,456 | INFO | orchestrator.executor | [1] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 13:59:29,456 | INFO | orchestrator.executor | [1] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 13:59:30,329 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 13:59:30,341 | INFO | orchestrator.executor | [1] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=0.885s
+2026-09-25 13:59:30,341 | INFO | orchestrator.executor | [1] Task completed | task=task1 | agent=rag_agent | latency=0.886s
+2026-09-25 13:59:30,341 | INFO | orchestrator.executor | [1] Task result stored | task=task1 | status=success
+2026-09-25 13:59:30,341 | INFO | orchestrator.executor | [1] Ready tasks: ['task2']
+2026-09-25 13:59:30,344 | INFO | orchestrator.executor | [1] Executing tasks in parallel | tasks=['task2']
+2026-09-25 13:59:30,344 | INFO | orchestrator.executor | [1] Task execution started | task=task2 | agent=graph_agent | dependencies=['task1']
+2026-09-25 13:59:30,344 | INFO | orchestrator.executor | [1] Building dependent task input | task=task2 | dependencies=['task1']
+2026-09-25 13:59:30,344 | INFO | orchestrator.executor | [1] Calling agent | task=task2 | agent=graph_agent
+2026-09-25 13:59:30,344 | INFO | orchestrator.executor | [1] Agent call started | task=task2 | agent=graph_agent
+2026-09-25 13:59:33,194 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 13:59:33,194 | INFO | orchestrator.executor | [1] Agent call completed | task=task2 | agent=graph_agent | status=200 | latency=2.852s
+2026-09-25 13:59:33,194 | INFO | orchestrator.executor | [1] Task completed | task=task2 | agent=graph_agent | latency=2.854s
+2026-09-25 13:59:33,194 | INFO | orchestrator.executor | [1] Task result stored | task=task2 | status=success
+2026-09-25 13:59:33,194 | INFO | orchestrator.executor | [1] Execution completed successfully
+2026-09-25 13:59:34,062 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:02:17,604 | INFO | orchestrator.orchestrator_api | [1] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:02:17,606 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:02:18,716 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:02:18,721 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Plan generated | tasks=2  | latency=1.116s
+2026-09-25 14:02:18,721 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Task created | task_id=task1 | agent=rag_agent | depends_on=[]
+2026-09-25 14:02:18,723 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Task created | task_id=task2 | agent=graph_agent | depends_on=[]
+2026-09-25 14:02:18,724 | INFO | orchestrator.executor | [1] Execution started | total_tasks=2
+2026-09-25 14:02:18,724 | INFO | orchestrator.executor | [1] Ready tasks: ['task1', 'task2']
+2026-09-25 14:02:18,724 | INFO | orchestrator.executor | [1] Executing tasks in parallel | tasks=['task1', 'task2']
+2026-09-25 14:02:18,726 | INFO | orchestrator.executor | [1] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 14:02:18,726 | INFO | orchestrator.executor | [1] Building independent task input | task=task1
+2026-09-25 14:02:18,726 | INFO | orchestrator.executor | [1] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 14:02:18,726 | INFO | orchestrator.executor | [1] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 14:02:18,740 | INFO | orchestrator.executor | [1] Task execution started | task=task2 | agent=graph_agent | dependencies=[]
+2026-09-25 14:02:18,740 | INFO | orchestrator.executor | [1] Building independent task input | task=task2
+2026-09-25 14:02:18,742 | INFO | orchestrator.executor | [1] Calling agent | task=task2 | agent=graph_agent
+2026-09-25 14:02:18,742 | INFO | orchestrator.executor | [1] Agent call started | task=task2 | agent=graph_agent
+2026-09-25 14:02:19,627 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 14:02:19,627 | INFO | orchestrator.executor | [1] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=0.901s
+2026-09-25 14:02:19,627 | INFO | orchestrator.executor | [1] Task completed | task=task1 | agent=rag_agent | latency=0.903s
+2026-09-25 14:02:21,768 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 14:02:21,769 | INFO | orchestrator.executor | [1] Agent call completed | task=task2 | agent=graph_agent | status=200 | latency=3.027s
+2026-09-25 14:02:21,770 | INFO | orchestrator.executor | [1] Task completed | task=task2 | agent=graph_agent | latency=3.031s
+2026-09-25 14:02:21,772 | INFO | orchestrator.executor | [1] Task result stored | task=task1 | status=success
+2026-09-25 14:02:21,772 | INFO | orchestrator.executor | [1] Task result stored | task=task2 | status=success
+2026-09-25 14:02:21,772 | INFO | orchestrator.executor | [1] Execution completed successfully
+2026-09-25 14:02:22,621 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:04:27,693 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:04:34,396 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:04:38,078 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:04:41,255 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:04:44,198 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:05:42,679 | INFO | orchestrator.orchestrator_api | [1] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:05:42,706 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:05:43,539 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:05:43,573 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Plan generated | tasks=0  | latency=0.870s
+2026-09-25 14:05:43,573 | INFO | orchestrator.executor | [1] Execution started | total_tasks=0
+2026-09-25 14:05:43,573 | INFO | orchestrator.executor | [1] Execution completed successfully
+2026-09-25 14:05:44,153 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:06:11,115 | INFO | orchestrator.orchestrator_api | [1] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:06:11,116 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:06:11,977 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:06:11,979 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Plan generated | tasks=0  | latency=0.864s
+2026-09-25 14:06:11,979 | INFO | orchestrator.executor | [1] Execution started | total_tasks=0
+2026-09-25 14:06:11,979 | INFO | orchestrator.executor | [1] Execution completed successfully
+2026-09-25 14:06:12,777 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:15:53,700 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:16:26,919 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:16:30,991 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:16:36,314 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:16:39,438 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:16:42,806 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:16:45,829 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:16:48,852 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:18:26,037 | INFO | orchestrator.orchestrator_api | [1] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:18:26,058 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:18:26,078 | ERROR | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning failed | error='Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 325, in create_plan
+    plan = await chain.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 3496, in ainvoke
+    input_ = await coro_with_context(part(), context, create_task=True)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 259, in ainvoke
+    return await self._acall_with_config(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 2352, in _acall_with_config
+    output: Output = await coro_with_context(coro, context)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 206, in _aformat_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 192, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+2026-09-25 14:18:26,087 | ERROR | orchestrator.orchestrator_api | [1] Orchestration failed | error=Failed to generate execution plan
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 325, in create_plan
+    plan = await chain.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 3496, in ainvoke
+    input_ = await coro_with_context(part(), context, create_task=True)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 259, in ainvoke
+    return await self._acall_with_config(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 2352, in _acall_with_config
+    output: Output = await coro_with_context(coro, context)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 206, in _aformat_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 192, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\orchestrator_api.py", line 46, in chat
+    result = await orchestrator.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\main.py", line 4090, in ainvoke
+    async for chunk in self.astream(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\main.py", line 3440, in astream
+    async for _ in runner.atick(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\_runner.py", line 396, in atick
+    await arun_with_retry(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\_retry.py", line 744, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\_internal\_runnable.py", line 760, in ainvoke
+    input = await step.ainvoke(input, config, **kwargs)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\_internal\_runnable.py", line 522, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\graph.py", line 48, in planner_node
+    plan = await create_plan(state["request_id"],
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 362, in create_plan
+    raise Exception(
+Exception: Failed to generate execution plan
+2026-09-25 14:18:28,566 | INFO | orchestrator.orchestrator_api | [1] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:18:28,568 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:18:28,571 | ERROR | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning failed | error='Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 325, in create_plan
+    plan = await chain.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 3496, in ainvoke
+    input_ = await coro_with_context(part(), context, create_task=True)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 259, in ainvoke
+    return await self._acall_with_config(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 2352, in _acall_with_config
+    output: Output = await coro_with_context(coro, context)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 206, in _aformat_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 192, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+2026-09-25 14:18:28,575 | ERROR | orchestrator.orchestrator_api | [1] Orchestration failed | error=Failed to generate execution plan
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 325, in create_plan
+    plan = await chain.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 3496, in ainvoke
+    input_ = await coro_with_context(part(), context, create_task=True)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 259, in ainvoke
+    return await self._acall_with_config(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 2352, in _acall_with_config
+    output: Output = await coro_with_context(coro, context)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 206, in _aformat_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 192, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\orchestrator_api.py", line 46, in chat
+    result = await orchestrator.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\main.py", line 4090, in ainvoke
+    async for chunk in self.astream(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\main.py", line 3440, in astream
+    async for _ in runner.atick(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\_runner.py", line 396, in atick
+    await arun_with_retry(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\_retry.py", line 744, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\_internal\_runnable.py", line 760, in ainvoke
+    input = await step.ainvoke(input, config, **kwargs)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\_internal\_runnable.py", line 522, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\graph.py", line 48, in planner_node
+    plan = await create_plan(state["request_id"],
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 362, in create_plan
+    raise Exception(
+Exception: Failed to generate execution plan
+2026-09-25 14:18:53,689 | INFO | orchestrator.orchestrator_api | [string] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:18:53,691 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:18:53,691 | ERROR | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning failed | error='Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 325, in create_plan
+    plan = await chain.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 3496, in ainvoke
+    input_ = await coro_with_context(part(), context, create_task=True)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 259, in ainvoke
+    return await self._acall_with_config(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 2352, in _acall_with_config
+    output: Output = await coro_with_context(coro, context)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 206, in _aformat_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 192, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+2026-09-25 14:18:53,691 | ERROR | orchestrator.orchestrator_api | [string] Orchestration failed | error=Failed to generate execution plan
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 325, in create_plan
+    plan = await chain.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 3496, in ainvoke
+    input_ = await coro_with_context(part(), context, create_task=True)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 259, in ainvoke
+    return await self._acall_with_config(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\runnables\base.py", line 2352, in _acall_with_config
+    output: Output = await coro_with_context(coro, context)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 206, in _aformat_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langchain_core\prompts\base.py", line 192, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'\\n                    "tasks"\'}.  Expected: [\'\\n                    "tasks"\', \'agents\', \'query\'] Received: [\'agents\', \'query\']\nNote: if you intended {\n                    "tasks"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{\n                    "tasks"}}\'.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\orchestrator_api.py", line 46, in chat
+    result = await orchestrator.ainvoke({
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\main.py", line 4090, in ainvoke
+    async for chunk in self.astream(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\main.py", line 3440, in astream
+    async for _ in runner.atick(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\_runner.py", line 396, in atick
+    await arun_with_retry(
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\pregel\_retry.py", line 744, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\_internal\_runnable.py", line 760, in ainvoke
+    input = await step.ainvoke(input, config, **kwargs)
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\langgraph\_internal\_runnable.py", line 522, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\graph.py", line 48, in planner_node
+    plan = await create_plan(state["request_id"],
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\planner.py", line 362, in create_plan
+    raise Exception(
+Exception: Failed to generate execution plan
+2026-09-25 14:23:34,633 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:23:37,842 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:23:40,813 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 14:24:59,433 | INFO | orchestrator.orchestrator_api | [string] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:24:59,443 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:25:00,598 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:25:00,629 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Plan generated | tasks=1
+2026-09-25 14:25:00,629 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 14:25:00,629 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 14:25:00,629 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 14:25:00,629 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 14:25:00,634 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 14:25:00,634 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 14:25:00,634 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 14:25:01,788 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 14:25:01,798 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=1.166s
+2026-09-25 14:25:01,798 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=1.168s
+2026-09-25 14:25:01,798 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 14:25:01,803 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 14:25:02,586 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:25:15,241 | INFO | orchestrator.orchestrator_api | [string] Request received | query=What is the operating temperature range of IMX-450?
+2026-09-25 14:25:15,244 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Planning started
+2026-09-25 14:25:16,318 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 14:25:16,322 | INFO | orchestrator.planner | [What is the operating temperature range of IMX-450?] Plan generated | tasks=1
+2026-09-25 14:25:16,322 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 14:25:16,322 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 14:25:16,322 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 14:25:16,322 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 14:25:16,322 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 14:25:16,322 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 14:25:16,322 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 14:25:17,075 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 14:25:17,075 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=0.752s
+2026-09-25 14:25:17,075 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=0.753s
+2026-09-25 14:25:17,075 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 14:25:17,075 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 14:25:17,823 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:21:34,132 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:22:56,264 | INFO | orchestrator.orchestrator_api | [string] Request received | query=Which suppliers manufacture IMX-450?
+2026-09-25 19:22:56,293 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450?] Planning started
+2026-09-25 19:22:57,514 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:22:57,541 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450?] Plan generated | tasks=1
+2026-09-25 19:22:57,541 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 19:22:57,541 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 19:22:57,541 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 19:22:57,541 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:22:57,541 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:22:57,541 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:22:57,541 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:22:59,132 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:22:59,137 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=1.588s
+2026-09-25 19:22:59,137 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=1.590s
+2026-09-25 19:22:59,138 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:22:59,138 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:23:00,023 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:23:47,442 | INFO | orchestrator.orchestrator_api | [string] Request received | query=Which suppliers manufacture IMX-450?
+2026-09-25 19:23:47,445 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450?] Planning started
+2026-09-25 19:23:48,484 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:23:48,490 | INFO | orchestrator.planner | [Which suppliers manufacture IMX-450?] Plan generated | tasks=1
+2026-09-25 19:23:48,492 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 19:23:48,492 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 19:23:48,492 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 19:23:48,492 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:23:48,492 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:23:48,492 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:23:48,492 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:23:49,335 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:23:49,341 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=0.845s
+2026-09-25 19:23:49,342 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=0.848s
+2026-09-25 19:23:49,342 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:23:49,342 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:23:50,254 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:24:18,723 | INFO | orchestrator.orchestrator_api | [string] Request received | query=What is the operating temperature of IMX-450 and which suppliers manufacture it?
+2026-09-25 19:24:18,726 | INFO | orchestrator.planner | [What is the operating temperature of IMX-450 and which suppliers manufacture it?] Planning started
+2026-09-25 19:24:19,849 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:24:19,851 | INFO | orchestrator.planner | [What is the operating temperature of IMX-450 and which suppliers manufacture it?] Plan generated | tasks=1
+2026-09-25 19:24:19,853 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 19:24:19,853 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 19:24:19,853 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 19:24:19,853 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:24:19,855 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:24:19,855 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:24:19,855 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:24:20,663 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:24:20,663 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=0.811s
+2026-09-25 19:24:20,663 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=0.813s
+2026-09-25 19:24:20,663 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:24:20,663 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:24:21,796 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:25:53,784 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:25:57,447 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:26:00,356 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:27:19,470 | INFO | orchestrator.orchestrator_api | [string] Request received | query=What is the operating temperature of IMX-450 and which suppliers manufacture it?
+2026-09-25 19:27:19,490 | INFO | orchestrator.planner | [What is the operating temperature of IMX-450 and which suppliers manufacture it?] Planning started
+2026-09-25 19:27:20,637 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:27:20,682 | INFO | orchestrator.planner | [What is the operating temperature of IMX-450 and which suppliers manufacture it?] Plan generated | tasks=1
+2026-09-25 19:27:20,685 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 19:27:20,685 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 19:27:20,685 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 19:27:20,685 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:27:20,685 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:27:20,685 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:27:20,685 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:27:21,921 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:27:21,921 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=1.236s
+2026-09-25 19:27:21,921 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=1.237s
+2026-09-25 19:27:21,921 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:27:21,921 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:27:22,828 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:36:37,102 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:36:39,714 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:36:42,138 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:36:47,712 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:36:50,677 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:38:45,280 | INFO | orchestrator.orchestrator_api | [string] Request received | query=What is the operating temperature of IMX-450 and which suppliers manufacture it?
+2026-09-25 19:38:45,295 | INFO | orchestrator.planner | [string] Planning started
+2026-09-25 19:38:46,348 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:38:46,379 | INFO | orchestrator.planner | [string] Plan generated | tasks=2
+2026-09-25 19:38:46,379 | INFO | orchestrator.executor | [string] Execution started | total_tasks=2
+2026-09-25 19:38:46,379 | INFO | orchestrator.executor | [string] Ready tasks: ['task1', 'task2']
+2026-09-25 19:38:46,379 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1', 'task2']
+2026-09-25 19:38:46,379 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:38:46,379 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:38:46,379 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:38:46,379 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:38:46,395 | INFO | orchestrator.executor | [string] Task execution started | task=task2 | agent=graph_agent | dependencies=[]
+2026-09-25 19:38:46,395 | INFO | orchestrator.executor | [string] Building independent task input | task=task2
+2026-09-25 19:38:46,395 | INFO | orchestrator.executor | [string] Calling agent | task=task2 | agent=graph_agent
+2026-09-25 19:38:46,398 | INFO | orchestrator.executor | [string] Agent call started | task=task2 | agent=graph_agent
+2026-09-25 19:38:47,665 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:38:47,669 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=1.285s
+2026-09-25 19:38:47,669 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=1.286s
+2026-09-25 19:38:51,133 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 19:38:51,133 | INFO | orchestrator.executor | [string] Agent call completed | task=task2 | agent=graph_agent | status=200 | latency=4.736s
+2026-09-25 19:38:51,133 | INFO | orchestrator.executor | [string] Task completed | task=task2 | agent=graph_agent | latency=4.738s
+2026-09-25 19:38:51,133 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:38:51,133 | INFO | orchestrator.executor | [string] Task result stored | task=task2 | status=success
+2026-09-25 19:38:51,133 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:38:51,939 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:39:56,729 | INFO | orchestrator.orchestrator_api | [string] Request received | query=Find which suppliers manufacture IMX-450
+2026-09-25 19:39:56,732 | INFO | orchestrator.planner | [string] Planning started
+2026-09-25 19:39:57,498 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:39:57,511 | INFO | orchestrator.planner | [string] Plan generated | tasks=1
+2026-09-25 19:39:57,511 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 19:39:57,511 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 19:39:57,511 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 19:39:57,511 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=graph_agent | dependencies=[]
+2026-09-25 19:39:57,511 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:39:57,511 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=graph_agent
+2026-09-25 19:39:57,511 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=graph_agent
+2026-09-25 19:39:58,913 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 19:39:58,913 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=graph_agent | status=200 | latency=1.401s
+2026-09-25 19:39:58,913 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=graph_agent | latency=1.403s
+2026-09-25 19:39:58,913 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:39:58,913 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:39:59,487 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:40:32,511 | INFO | orchestrator.orchestrator_api | [string] Request received | query=Find the operating temperature of IMX-450
+2026-09-25 19:40:32,512 | INFO | orchestrator.planner | [string] Planning started
+2026-09-25 19:40:33,380 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:40:33,382 | INFO | orchestrator.planner | [string] Plan generated | tasks=1
+2026-09-25 19:40:33,382 | INFO | orchestrator.executor | [string] Execution started | total_tasks=1
+2026-09-25 19:40:33,382 | INFO | orchestrator.executor | [string] Ready tasks: ['task1']
+2026-09-25 19:40:33,382 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1']
+2026-09-25 19:40:33,382 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:40:33,382 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:40:33,382 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:40:33,382 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:40:34,187 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:40:34,187 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=0.803s
+2026-09-25 19:40:34,193 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=0.805s
+2026-09-25 19:40:34,193 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:40:34,193 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:40:34,905 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:41:34,692 | INFO | orchestrator.orchestrator_api | [string] Request received | query=What is the operating temperature of IMX-450 and who are its suppliers?
+2026-09-25 19:41:34,695 | INFO | orchestrator.planner | [string] Planning started
+2026-09-25 19:41:35,273 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:41:35,283 | INFO | orchestrator.planner | [string] Plan generated | tasks=2
+2026-09-25 19:41:35,283 | INFO | orchestrator.executor | [string] Execution started | total_tasks=2
+2026-09-25 19:41:35,283 | INFO | orchestrator.executor | [string] Ready tasks: ['task1', 'task2']
+2026-09-25 19:41:35,283 | INFO | orchestrator.executor | [string] Executing tasks in parallel | tasks=['task1', 'task2']
+2026-09-25 19:41:35,283 | INFO | orchestrator.executor | [string] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:41:35,283 | INFO | orchestrator.executor | [string] Building independent task input | task=task1
+2026-09-25 19:41:35,283 | INFO | orchestrator.executor | [string] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:41:35,289 | INFO | orchestrator.executor | [string] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:41:35,302 | INFO | orchestrator.executor | [string] Task execution started | task=task2 | agent=graph_agent | dependencies=[]
+2026-09-25 19:41:35,302 | INFO | orchestrator.executor | [string] Building independent task input | task=task2
+2026-09-25 19:41:35,302 | INFO | orchestrator.executor | [string] Calling agent | task=task2 | agent=graph_agent
+2026-09-25 19:41:35,302 | INFO | orchestrator.executor | [string] Agent call started | task=task2 | agent=graph_agent
+2026-09-25 19:41:36,127 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:41:36,127 | INFO | orchestrator.executor | [string] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=0.846s
+2026-09-25 19:41:36,127 | INFO | orchestrator.executor | [string] Task completed | task=task1 | agent=rag_agent | latency=0.848s
+2026-09-25 19:41:37,092 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 19:41:37,092 | INFO | orchestrator.executor | [string] Agent call completed | task=task2 | agent=graph_agent | status=200 | latency=1.790s
+2026-09-25 19:41:37,092 | INFO | orchestrator.executor | [string] Task completed | task=task2 | agent=graph_agent | latency=1.792s
+2026-09-25 19:41:37,092 | INFO | orchestrator.executor | [string] Task result stored | task=task1 | status=success
+2026-09-25 19:41:37,092 | INFO | orchestrator.executor | [string] Task result stored | task=task2 | status=success
+2026-09-25 19:41:37,092 | INFO | orchestrator.executor | [string] Execution completed successfully
+2026-09-25 19:41:37,706 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:49:35,343 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:52:48,210 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:52:51,922 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:53:13,567 | INFO | root | Logging initialized. Log file: C:\Users\kores\OneDrive\Desktop\Project\config\logs\orchestrator.log
+2026-09-25 19:54:41,576 | INFO | orchestrator.orchestrator_api | [8709a130-49d3-43da-a7ea-2c02da1aa364] Request received | query=What is the operating temperature of IMX-450 and who are its suppliers?
+2026-09-25 19:54:41,606 | INFO | orchestrator.planner | [8709a130-49d3-43da-a7ea-2c02da1aa364] Planning started
+2026-09-25 19:54:43,098 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:54:43,134 | INFO | orchestrator.planner | [8709a130-49d3-43da-a7ea-2c02da1aa364] Plan generated | tasks=2
+2026-09-25 19:54:43,134 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Execution started | total_tasks=2
+2026-09-25 19:54:43,134 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Ready tasks: ['task1', 'task2']
+2026-09-25 19:54:43,134 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Executing tasks in parallel | tasks=['task1', 'task2']
+2026-09-25 19:54:43,134 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 19:54:43,134 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Building independent task input | task=task1
+2026-09-25 19:54:43,134 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 19:54:43,134 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 19:54:43,144 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Task execution started | task=task2 | agent=graph_agent | dependencies=[]
+2026-09-25 19:54:43,144 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Building independent task input | task=task2
+2026-09-25 19:54:43,144 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Calling agent | task=task2 | agent=graph_agent
+2026-09-25 19:54:43,144 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Agent call started | task=task2 | agent=graph_agent
+2026-09-25 19:54:44,359 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 19:54:44,361 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=1.218s
+2026-09-25 19:54:44,361 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Task completed | task=task1 | agent=rag_agent | latency=1.221s
+2026-09-25 19:54:45,730 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 19:54:45,730 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Agent call completed | task=task2 | agent=graph_agent | status=200 | latency=2.583s
+2026-09-25 19:54:45,741 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Task completed | task=task2 | agent=graph_agent | latency=2.586s
+2026-09-25 19:54:45,741 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Task result stored | task=task1 | status=success
+2026-09-25 19:54:45,741 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Task result stored | task=task2 | status=success
+2026-09-25 19:54:45,741 | INFO | orchestrator.executor | [8709a130-49d3-43da-a7ea-2c02da1aa364] Execution completed successfully
+2026-09-25 19:54:46,409 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:55:28,344 | INFO | orchestrator.orchestrator_api | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Request received | query=Find which suppliers manufacture IMX-450.
+2026-09-25 19:55:28,347 | INFO | orchestrator.planner | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Planning started
+2026-09-25 19:55:29,156 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 19:55:29,156 | INFO | orchestrator.planner | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Plan generated | tasks=1
+2026-09-25 19:55:29,156 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Execution started | total_tasks=1
+2026-09-25 19:55:29,156 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Ready tasks: ['task1']
+2026-09-25 19:55:29,156 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Executing tasks in parallel | tasks=['task1']
+2026-09-25 19:55:29,156 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Task execution started | task=task1 | agent=graph_agent | dependencies=[]
+2026-09-25 19:55:29,156 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Building independent task input | task=task1
+2026-09-25 19:55:29,164 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Calling agent | task=task1 | agent=graph_agent
+2026-09-25 19:55:29,164 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Agent call started | task=task1 | agent=graph_agent
+2026-09-25 19:55:30,570 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 19:55:30,570 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Agent call completed | task=task1 | agent=graph_agent | status=200 | latency=1.408s
+2026-09-25 19:55:30,570 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Task completed | task=task1 | agent=graph_agent | latency=1.410s
+2026-09-25 19:55:30,570 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Task result stored | task=task1 | status=success
+2026-09-25 19:55:30,574 | INFO | orchestrator.executor | [f4437f4d-7333-4948-8f16-bb372d2da0f1] Execution completed successfully
+2026-09-25 19:55:31,173 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 20:16:56,403 | INFO | orchestrator.orchestrator_api | [e43a60f4-445a-4623-8e53-d879a6c784cc] Request received | query=What is the operating temperature of IMX-450 and who are its suppliers?
+2026-09-25 20:16:56,419 | INFO | orchestrator.planner | [e43a60f4-445a-4623-8e53-d879a6c784cc] Planning started
+2026-09-25 20:16:59,250 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 20:16:59,250 | INFO | orchestrator.planner | [e43a60f4-445a-4623-8e53-d879a6c784cc] Plan generated | tasks=2
+2026-09-25 20:16:59,267 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Execution started | total_tasks=2
+2026-09-25 20:16:59,267 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Ready tasks: ['task1', 'task2']
+2026-09-25 20:16:59,267 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Executing tasks in parallel | tasks=['task1', 'task2']
+2026-09-25 20:16:59,267 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Task execution started | task=task1 | agent=rag_agent | dependencies=[]
+2026-09-25 20:16:59,267 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Building independent task input | task=task1
+2026-09-25 20:16:59,267 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Calling agent | task=task1 | agent=rag_agent
+2026-09-25 20:16:59,267 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Agent call started | task=task1 | agent=rag_agent
+2026-09-25 20:16:59,285 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Task execution started | task=task2 | agent=graph_agent | dependencies=[]
+2026-09-25 20:16:59,285 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Building independent task input | task=task2
+2026-09-25 20:16:59,285 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Calling agent | task=task2 | agent=graph_agent
+2026-09-25 20:16:59,285 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Agent call started | task=task2 | agent=graph_agent
+2026-09-25 20:17:00,913 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8081/invoke_rag "HTTP/1.1 200 OK"
+2026-09-25 20:17:00,916 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Agent call completed | task=task1 | agent=rag_agent | status=200 | latency=1.645s
+2026-09-25 20:17:00,916 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Task completed | task=task1 | agent=rag_agent | latency=1.647s
+2026-09-25 20:17:01,098 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 500 Internal Server Error"
+2026-09-25 20:17:01,099 | ERROR | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Task failed | task=task2 | agent=graph_agent | latency=1.814s | error=Server error '500 Internal Server Error' for url 'http://127.0.0.1:8082/invoke_graph'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+Traceback (most recent call last):
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\executor.py", line 184, in run_task
+    output = await call_agent(
+  File "C:\Users\kores\OneDrive\Desktop\Project\orchestrator\executor.py", line 46, in call_agent
+    response.raise_for_status()
+  File "C:\Users\kores\OneDrive\Desktop\Project\venv\lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8082/invoke_graph'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+2026-09-25 20:17:01,114 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Task result stored | task=task1 | status=success
+2026-09-25 20:17:01,115 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Task result stored | task=task2 | status=failed
+2026-09-25 20:17:01,115 | INFO | orchestrator.executor | [e43a60f4-445a-4623-8e53-d879a6c784cc] Execution completed successfully
+2026-09-25 20:17:01,798 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 20:18:00,392 | INFO | orchestrator.orchestrator_api | [949a7291-5c33-464e-ae49-8839d303f7a6] Request received | query=Find which suppliers manufacture IMX-450.
+2026-09-25 20:18:00,394 | INFO | orchestrator.planner | [949a7291-5c33-464e-ae49-8839d303f7a6] Planning started
+2026-09-25 20:18:01,178 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-09-25 20:18:01,182 | INFO | orchestrator.planner | [949a7291-5c33-464e-ae49-8839d303f7a6] Plan generated | tasks=1
+2026-09-25 20:18:01,182 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Execution started | total_tasks=1
+2026-09-25 20:18:01,182 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Ready tasks: ['task1']
+2026-09-25 20:18:01,182 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Executing tasks in parallel | tasks=['task1']
+2026-09-25 20:18:01,182 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Task execution started | task=task1 | agent=graph_agent | dependencies=[]
+2026-09-25 20:18:01,182 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Building independent task input | task=task1
+2026-09-25 20:18:01,182 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Calling agent | task=task1 | agent=graph_agent
+2026-09-25 20:18:01,182 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Agent call started | task=task1 | agent=graph_agent
+2026-09-25 20:18:03,659 | INFO | httpx | HTTP Request: POST http://127.0.0.1:8082/invoke_graph "HTTP/1.1 200 OK"
+2026-09-25 20:18:03,659 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Agent call completed | task=task1 | agent=graph_agent | status=200 | latency=2.476s
+2026-09-25 20:18:03,659 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Task completed | task=task1 | agent=graph_agent | latency=2.479s
+2026-09-25 20:18:03,668 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Task result stored | task=task1 | status=success
+2026-09-25 20:18:03,668 | INFO | orchestrator.executor | [949a7291-5c33-464e-ae49-8839d303f7a6] Execution completed successfully
+2026-09-25 20:18:04,142 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
